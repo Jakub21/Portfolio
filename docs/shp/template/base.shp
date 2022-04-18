@@ -1,0 +1,24 @@
+@doctype
+$html {
+  $head {
+    %meta[charset 'utf-8']
+    %meta[name 'viewport' content 'width=device-width'
+      initial-scale 1 shrink-to-fit 'no']
+    %link[rel icon href '/img/logo_white.png']
+    %link[rel stylesheet href '/css/index.css']
+    %link[rel stylesheet
+      href 'https://fonts.googleapis.com/css?family=Montserrat']
+    %link[rel stylesheet
+      href 'https://fonts.googleapis.com/css?family=Open+Sans']
+    $script[src '/lib/shp']
+    $script[src '/lib/Domi']
+    $script[src '/lib/oci']
+    @paste[#Head]
+  }
+  $body[onload 'init()'] {
+    // @include[file '//module/header']
+    $div[#Content] {
+      @paste[#Body]
+    }
+  }
+}

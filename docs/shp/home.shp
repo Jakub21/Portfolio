@@ -1,0 +1,11 @@
+@include[file 'template/base']
+
+@define[#Head] {
+  $title {Portfolio}
+  $script[src '/js/Snowflake.js']
+}
+
+@define[#Body] {
+  $p[#FPS] { FPS }
+  $canvas[#Canvas]
+}

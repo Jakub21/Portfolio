@@ -1,0 +1,9 @@
+@include[file 'template/base']
+
+@define[#Head] {
+  $title {Portfolio | Projects}
+}
+
+@define[#Body] {
+  Projects
+}

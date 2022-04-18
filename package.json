@@ -1,0 +1,21 @@
+{
+  "name": "@jakub21/portfolio",
+  "version": "1.0.0",
+  "description": "Personal website",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jakub21",
+  "license": "ISC",
+  "dependencies": {
+    "@jakub21/domi": "^1.0.5",
+    "@jakub21/nra": "^1.1.10",
+    "@jakub21/oci": "^1.0.1",
+    "@jakub21/shp": "^1.0.0"
+  }
+}
