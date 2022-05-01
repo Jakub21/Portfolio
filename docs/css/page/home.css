@@ -1,0 +1,150 @@
+html {
+  background-image: linear-gradient(#46C, #358, #235);
+  overflow: hidden;
+}
+
+#Content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#Background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity 1s linear;
+}
+#Background.Outro {
+  opacity: 1;
+}
+
+#Container {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  background-blend-mode: saturation;
+  transition: all 1s ease;
+  left: 0;
+  top: 0;
+  opacity: 1;
+}
+#Container.SlideRight {
+  left: 100vw;
+}
+#Container.SlideLeft {
+  left: -100vw;
+}
+#Container.Outro {
+  opacity: 0;
+}
+#Container.Intro {
+  opacity: 0;
+  top: -5em;
+}
+
+#Title {
+  box-sizing: border-box;
+  background-color: #FFF2;
+  padding: 1.25em;
+  font-size: 1.33rem;
+}
+@media only screen and (min-resolution: 150dpi) and (orientation: portrait) {
+  #Title {
+    font-size: 1rem;
+  }
+}
+#Title .Main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 2em 0;
+}
+#Title .Main img {
+  height: 4em;
+  margin-right: 2em;
+}
+@media only screen and (min-resolution: 150dpi) and (orientation: portrait) {
+  #Title .Main img {
+    height: 2em;
+  }
+}
+#Title .Main h1 {
+  text-align: center;
+  font-size: 4em;
+  margin: 0;
+}
+@media only screen and (min-resolution: 150dpi) and (orientation: portrait) {
+  #Title .Main h1 {
+    font-size: 2em;
+  }
+}
+#Title p {
+  float: none;
+  clear: both;
+}
+
+#SlideButtons {
+  float: none;
+  clear: both;
+}
+#SlideButtons .Button {
+  position: relative;
+  font-weight: 300;
+  float: left;
+  left: 0;
+  width: 50%;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 0.1em 0.5em;
+  background-color: #FFF5;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+@media only screen and (max-resolution: 149dpi) {
+  #SlideButtons .Button {
+    font-size: 1.2em;
+  }
+}
+#SlideButtons .Button:hover#ButtonProjects {
+  left: -2em;
+}
+#SlideButtons .Button:hover#ButtonContact {
+  left: 2em;
+}
+#SlideButtons .Button .Symbol {
+  font-size: 1.6em;
+  position: relative;
+  top: 0.15em;
+  margin: 0 0.25em;
+}
+
+#Canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -5;
+  display: block;
+  background: none;
+  width: 100%;
+  height: 100vh;
+  transition: all 1s linear;
+}
+#Canvas.SlideRight {
+  left: 50vw;
+}
+#Canvas.SlideLeft {
+  left: -50vw;
+}
+#Canvas.Intro {
+  opacity: 0;
+}

@@ -1,0 +1,143 @@
+@import '../module/breakpoint';
+@import '../module/clearfix';
+
+html {
+  // background-image: linear-gradient(#8AF, #57A);
+  background-image: linear-gradient(#46C, #358, #235);
+  overflow: hidden;
+}
+
+#Content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#Background {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity 1s linear;
+  &.Outro {
+    opacity: 1;
+  }
+}
+
+#Container {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  background-blend-mode: saturation;
+  transition: all 1s ease;
+  left: 0; top: 0;
+  opacity: 1;
+  &.SlideRight {
+    left: 100vw;
+  }
+  &.SlideLeft {
+    left: -100vw;
+  }
+  &.Outro {
+    opacity: 0;
+  }
+  &.Intro {
+    opacity: 0;
+    top: -5em;
+  }
+}
+
+#Title {
+  box-sizing: border-box;
+  background-color: #FFF2;
+  padding: 1.25em;
+  font-size: 1.33rem;
+  @include breakpoint(hires portrait) {
+    font-size: 1rem;
+  }
+  .Main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 2em 0;
+    img {
+      height: 4em;
+      margin-right: 2em;
+      @include breakpoint(hires portrait) {
+        height: 2em;
+      }
+    }
+    h1 {
+      text-align: center;
+      font-size: 4em;
+      margin: 0;
+      @include breakpoint(hires portrait) {
+        font-size: 2em;
+      }
+    }
+  }
+  p {
+    @include clearfix;
+  }
+}
+
+#SlideButtons {
+  @include clearfix;
+  .Button {
+    position: relative;
+    font-weight: 300;
+    float: left;
+    left: 0;
+    width: 50%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0 .1em .5em;
+    background-color: #FFF5;
+    transition: all .3s ease;
+    cursor: pointer;
+    @include breakpoint(lowres) {
+      font-size: 1.2em;
+    }
+    &:hover {
+      // background-color: #AAAA;
+      &#ButtonProjects {
+        left: -2em;
+      }
+      &#ButtonContact {
+        left: 2em;
+      }
+    }
+    .Symbol {
+      font-size: 1.6em;
+      position: relative;
+      top: .15em;
+      margin: 0 .25em;
+    }
+  }
+}
+
+#Canvas {
+  position: absolute;
+  top: 0; left: 0;
+  z-index: -5;
+  display: block;
+  background: none;
+  width: 100%;
+  height: 100vh;
+  transition: all 1s linear;
+  &.SlideRight {
+    left: 50vw;
+  }
+  &.SlideLeft {
+    left: -50vw;
+  }
+  &.Intro {
+    opacity: 0;
+  }
+}

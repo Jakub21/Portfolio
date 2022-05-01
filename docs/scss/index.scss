@@ -1,20 +1,29 @@
 @import 'module/clearfix';
 @import 'module/header';
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 html {
-  background-color: #000;
-  color: #FFF;
+  background-color: #FFF;
+  color: #000;
 }
 
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 200;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   letter-spacing: .033em;
+  font-weight: inherit;
 }
 
 a {
@@ -22,17 +31,15 @@ a {
   text-decoration: none;
 }
 
-#Content {
-  z-index: 5;
+input, button {
+  font-size: inherit;
+  font-weight: inherit;
 }
 
-#Canvas {
+footer {
   position: absolute;
-  top: 0;
-  z-index: -5;
-  display: block;
-  background-color: #012;
-  width: 100%;
-  height: 100vh;/* calc(95vh - 3em);*/
-  /* background-image: linear-gradient(#124, #012); */
+  bottom: .33em; right: .33em;
+  font-size: .75rem;
+  opacity: .8;
+  color: #FFF;
 }

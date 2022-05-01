@@ -1,0 +1,92 @@
+@import '../module/breakpoint';
+@import '../module/clearfix';
+
+#Background {
+  z-index: -1;
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  width: calc(100vw - (100vw - 100%)); // NOTE
+  background-color: #000;
+  transition: opacity 1s ease;
+}
+
+#Content {
+  position: static;
+  top: 0;
+  margin: 0;
+  display: block;
+  color: #FFF;
+  padding: 0;
+}
+
+#Container {
+  opacity: 1;
+  transition: opacity 1s ease;
+  &.Intro {
+    opacity: 0;
+  }
+  #ListingContainer {
+    .Project {
+      background-color: #333;
+      @include breakpoint(lowres) {
+        margin: .5em;
+      }
+      @include breakpoint(hires) {
+        margin: .5em 0;
+      }
+      transition: all .3s ease;
+      transition-property: color, background, height, opacity;
+      overflow: hidden;
+      opacity: .8;
+      position: relative;
+      @include clearfix;
+      &.on {
+        // h2 { color: #C08; }
+        height: 8em;
+        background-color: #46C;
+        opacity: 1;
+      }
+      &.off {
+        height: 2.55em;
+        .ButtonMore { width: 0; }
+        cursor: pointer;
+      }
+      &:hover { opacity: 1; }
+      .Content {
+        float: left;
+        width: calc(100% - 6em);
+        padding: .3em .5em;
+        box-sizing: border-box;
+        font-weight: 300;
+      }
+      .ButtonMore {
+        float: right;
+        width: 4em;
+        height: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        background: #CCCD;
+        color: #000;
+        transition: all .3s ease;
+        transition-property: width, background;
+        cursor: pointer;
+        div {
+          margin-top: 2.25em;
+          text-align: center;
+          font-weight: 300;
+          .Symbol {
+            display: block;
+            font-size: 1.5em;
+          }
+        }
+        &:hover {
+          width: 6em;
+        }
+      }
+      h2 {
+        margin: .1em 0;
+      }
+    }
+  }
+}

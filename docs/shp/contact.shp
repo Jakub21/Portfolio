@@ -1,7 +1,9 @@
-@include[file 'template/base']
+@include[file 'template/full']
 
 @define[#Head] {
-  $title {Portfolio | Contact}
+  $title {Jakub21 | Contact}
+  %link[rel stylesheet href '/css/page/projects.css']
+  $script[src '/js/subpage.js']
 }
 
 @define[#Body] {

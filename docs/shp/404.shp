@@ -1,0 +1,11 @@
+@include[file 'template/base']
+
+@define[#Head] {
+  $title {Jakub21 | Contact}
+  %link[rel stylesheet href '/css/page/404.css']
+}
+
+@define[#Body] {
+  $h1 {404}
+  $a[href '/'] { $span[.Symbol] {⌂} Go back home }
+}

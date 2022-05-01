@@ -18,5 +18,19 @@ module.exports = (config, log) => {
     });
   }
 
+  router.get('/about=:project', (req, resp) => {
+    fs.readFile(`./docs/html/about.html`, 'utf-8', (err, data) => {
+      if (err) { resp.status(404).end(); return; }
+      resp.write(data);
+      resp.status(200).end();
+    });
+  });
+
+  router.post('/getInfo', (req, resp) => {
+    // NOTE
+    // design decision must be made, keep .js or reformat to .yaml
+    resp.json({success:false});
+  });
+
   return router;
 }

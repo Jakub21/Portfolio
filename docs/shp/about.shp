@@ -1,0 +1,13 @@
+@include[file 'template/full']
+
+@define[#Head] {
+  $title {Jakub21 | About}
+  %link[rel stylesheet href '/css/page/about.css']
+  $script[src '/js/subpage.js']
+  $script[src '/js/about.js']
+}
+
+@define[#Body] {
+  $div[#Container .Intro]
+  $div[#Background .Intro]
+}

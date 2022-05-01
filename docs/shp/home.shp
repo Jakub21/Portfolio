@@ -1,11 +1,30 @@
 @include[file 'template/base']
 
 @define[#Head] {
-  $title {Portfolio}
+  $title {Jakub21}
+  %link[rel stylesheet href '/css/page/home.css']
+  $script[src '/js/home.js']
   $script[src '/js/Snowflake.js']
 }
 
 @define[#Body] {
-  $p[#FPS] { FPS }
-  $canvas[#Canvas]
+  $canvas[#Canvas .Intro]
+  $div[#Background]
+  $div[#Container .Intro] {
+    $div[#Title] {
+      $div[.Main] {
+        %img[src '/img/logo_black.png']
+        $h1 {My projects}
+      }
+      $p {List of my repositories with descriptions and documentation}
+    }
+    $div[#SlideButtons] {
+      $div[#ButtonProjects .Button] { $span[.Symbol] {◀} Projects }
+      $div[#ButtonContact .Button] { Contact $span[.Symbol] {▶} }
+      // { ▼ }
+    }
+  }
+  $footer {
+    © Jakub21, 2022 Q2
+  }
 }

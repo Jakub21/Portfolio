@@ -1,0 +1,25 @@
+html {
+  background: #000;
+  color: #FFF;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 30vh;
+  font-size: 7em;
+  color: #5AF;
+}
+
+a {
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #5AF;
+}
+
+.Symbol {
+  font-size: 2rem;
+  margin-right: 0.33em;
+  position: relative;
+}

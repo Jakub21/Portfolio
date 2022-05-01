@@ -1,9 +1,9 @@
 
 $header {
-  $a[.HomeLink href 'index.html'] {
-    $img[src '/img/logo_black.png']
-    $h3 {Portfolio}
+  $a[.HomeLink href '/'] {
+    $img[src '/img/logo_white.png']
+    $h3 {Home}
   }
-  $a[.Button href 'contact.html'] {Contact}
-  $a[.Button href 'projects.html'] {Projects}
+  $a[.Button href '/contact'] {Contact}
+  $a[.Button href '/projects'] {Projects}
 }

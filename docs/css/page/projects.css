@@ -1,0 +1,96 @@
+#Background {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: calc(100vw - (100vw - 100%));
+  background-color: #000;
+  transition: opacity 1s ease;
+}
+
+#Content {
+  position: static;
+  top: 0;
+  margin: 0;
+  display: block;
+  color: #FFF;
+  padding: 0;
+}
+
+#Container {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+#Container.Intro {
+  opacity: 0;
+}
+#Container #ListingContainer .Project {
+  background-color: #333;
+  transition: all 0.3s ease;
+  transition-property: color, background, height, opacity;
+  overflow: hidden;
+  opacity: 0.8;
+  position: relative;
+  float: none;
+  clear: both;
+}
+@media only screen and (max-resolution: 149dpi) {
+  #Container #ListingContainer .Project {
+    margin: 0.5em;
+  }
+}
+@media only screen and (min-resolution: 150dpi) {
+  #Container #ListingContainer .Project {
+    margin: 0.5em 0;
+  }
+}
+#Container #ListingContainer .Project.on {
+  height: 8em;
+  background-color: #46C;
+  opacity: 1;
+}
+#Container #ListingContainer .Project.off {
+  height: 2.55em;
+  cursor: pointer;
+}
+#Container #ListingContainer .Project.off .ButtonMore {
+  width: 0;
+}
+#Container #ListingContainer .Project:hover {
+  opacity: 1;
+}
+#Container #ListingContainer .Project .Content {
+  float: left;
+  width: calc(100% - 6em);
+  padding: 0.3em 0.5em;
+  box-sizing: border-box;
+  font-weight: 300;
+}
+#Container #ListingContainer .Project .ButtonMore {
+  float: right;
+  width: 4em;
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  background: #CCCD;
+  color: #000;
+  transition: all 0.3s ease;
+  transition-property: width, background;
+  cursor: pointer;
+}
+#Container #ListingContainer .Project .ButtonMore div {
+  margin-top: 2.25em;
+  text-align: center;
+  font-weight: 300;
+}
+#Container #ListingContainer .Project .ButtonMore div .Symbol {
+  display: block;
+  font-size: 1.5em;
+}
+#Container #ListingContainer .Project .ButtonMore:hover {
+  width: 6em;
+}
+#Container #ListingContainer .Project h2 {
+  margin: 0.1em 0;
+}

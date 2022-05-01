@@ -12,10 +12,10 @@ $html {
       href 'https://fonts.googleapis.com/css?family=Open+Sans']
     $script[src '/lib/shp']
     $script[src '/lib/Domi']
-    $script[src '/lib/oci']
     @paste[#Head]
   }
   $body[onload 'init()'] {
+    @include[file '//module/header']
     $div[#Content] {
       @paste[#Body]
     }

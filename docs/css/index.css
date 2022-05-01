@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300&display=swap");
 header {
-  background-color: #CCC;
-  color: #000;
+  background-color: #111;
+  color: #FFF;
   padding: 0.5em;
+  font-weight: 300;
   float: none;
   clear: both;
 }
@@ -16,7 +19,7 @@ header .HomeLink h3 {
 }
 header .Button {
   float: right;
-  border-left: 1px solid #000;
+  border-left: 1px solid #FFF;
   padding: 0 0.5em;
 }
 header .Button:nth-child(2) {
@@ -26,23 +29,29 @@ header .Button, header .HomeLink {
   transition: color 0.2s ease;
 }
 header .Button:hover, header .HomeLink:hover {
-  color: #07B;
+  color: #5AF;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
 html {
-  background-color: #000;
-  color: #FFF;
+  background-color: #FFF;
+  color: #000;
 }
 
 body {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 200;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;
-  font-family: "Lato", sans-serif;
+  font-family: "Montserrat", sans-serif;
   letter-spacing: 0.033em;
+  font-weight: inherit;
 }
 
 a {
@@ -50,18 +59,16 @@ a {
   text-decoration: none;
 }
 
-#Content {
-  z-index: 5;
+input, button {
+  font-size: inherit;
+  font-weight: inherit;
 }
 
-#Canvas {
+footer {
   position: absolute;
-  top: 0;
-  z-index: -5;
-  display: block;
-  background-color: #012;
-  width: 100%;
-  height: 100vh;
-  /* calc(95vh - 3em);*/
-  /* background-image: linear-gradient(#124, #012); */
+  bottom: 0.33em;
+  right: 0.33em;
+  font-size: 0.75rem;
+  opacity: 0.8;
+  color: #FFF;
 }

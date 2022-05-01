@@ -1,8 +1,9 @@
 
 header {
-  background-color: #CCC;
-  color: #000;
+  background-color: #111;
+  color: #FFF;
   padding: .5em;
+  font-weight: 300;
   @include clearfix;
   .HomeLink {
     img {
@@ -17,7 +18,7 @@ header {
   }
   .Button {
     float: right;
-    border-left: 1px solid #000;
+    border-left: 1px solid #FFF;
     padding: 0 .5em;
     &:nth-child(2) { // NOTE
       padding-right: 0;
@@ -26,7 +27,7 @@ header {
   .Button, .HomeLink {
     transition: color .2s ease;
     &:hover {
-      color: #07B;
+      color: #5AF;
     }
   }
 }

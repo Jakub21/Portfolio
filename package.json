@@ -13,7 +13,7 @@
   "author": "Jakub21",
   "license": "ISC",
   "dependencies": {
-    "@jakub21/domi": "^1.0.5",
+    "@jakub21/domi": "^1.0.7",
     "@jakub21/nra": "^1.1.10",
     "@jakub21/oci": "^1.0.1",
     "@jakub21/shp": "^1.0.0"
