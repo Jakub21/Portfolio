@@ -4,6 +4,7 @@ const devMode = process.argv.splice(2).includes('dev');
 
 const config = new nra.Config('./config', 'server', true);
 config.set('devMode', devMode);
+config.set('server.port', process.env.PORT || config.get('server.port'));
 
 const app = new nra.Application(config);
 const log = new nra.Logger(config);
