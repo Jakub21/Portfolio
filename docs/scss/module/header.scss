@@ -1,7 +1,7 @@
 
 header {
-  background-color: #111;
-  color: #FFF;
+  background-color: #CCC;
+  color: #000;
   padding: .5em;
   font-weight: 300;
   @include clearfix;
@@ -25,9 +25,9 @@ header {
     }
   }
   .Button, .HomeLink {
-    transition: color .2s ease;
+    transition: color .3s ease;
     &:hover {
-      color: #5AF;
+      color: #46C;
     }
   }
 }

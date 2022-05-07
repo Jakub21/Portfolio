@@ -1,13 +1,19 @@
 @include[file 'template/full']
 
 @define[#Head] {
-  $title {Jakub21 | About}
+  $title {Jakub21 | About project}
   %link[rel stylesheet href '/css/page/about.css']
+  $script[src '/js/elements.js']
   $script[src '/js/subpage.js']
   $script[src '/js/about.js']
 }
 
 @define[#Body] {
-  $div[#Container .Intro]
   $div[#Background .Intro]
+  $div[#Container .Intro] {
+    $div[#ProjectContainer]
+  }
+  $script[type module] {
+    buildProject();
+  }
 }

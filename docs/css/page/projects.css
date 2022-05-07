@@ -1,3 +1,7 @@
+html {
+  background-color: #634;
+}
+
 #Background {
   z-index: -1;
   position: fixed;
@@ -7,6 +11,12 @@
   width: calc(100vw - (100vw - 100%));
   background-color: #000;
   transition: opacity 1s ease;
+  background-image: url("/img/coding.jpg");
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: luminosity;
+  background-color: #634;
+  filter: blur(0.25em) brightness(50%);
 }
 
 #Content {
@@ -20,7 +30,7 @@
 
 #Container {
   opacity: 1;
-  transition: opacity 1s ease;
+  transition: opacity 0.5s ease;
 }
 #Container.Intro {
   opacity: 0;
@@ -30,35 +40,41 @@
   transition: all 0.3s ease;
   transition-property: color, background, height, opacity;
   overflow: hidden;
-  opacity: 0.8;
+  opacity: 0.7;
   position: relative;
   float: none;
   clear: both;
 }
 @media only screen and (max-resolution: 149dpi) {
   #Container #ListingContainer .Project {
-    margin: 0.5em;
+    margin: 0.75em;
   }
 }
 @media only screen and (min-resolution: 150dpi) {
   #Container #ListingContainer .Project {
-    margin: 0.5em 0;
+    margin: 0.75em 0;
   }
 }
 #Container #ListingContainer .Project.on {
-  height: 8em;
   background-color: #46C;
-  opacity: 1;
+  height: 8em;
+  opacity: 0.9;
 }
 #Container #ListingContainer .Project.off {
-  height: 2.55em;
+  height: 2.75em;
   cursor: pointer;
+}
+#Container #ListingContainer .Project.off h2 {
+  margin-bottom: 0.5em;
+}
+#Container #ListingContainer .Project.off .ProjectBody .Tags {
+  display: none;
 }
 #Container #ListingContainer .Project.off .ButtonMore {
   width: 0;
 }
 #Container #ListingContainer .Project:hover {
-  opacity: 1;
+  opacity: 0.9;
 }
 #Container #ListingContainer .Project .Content {
   float: left;
@@ -66,6 +82,13 @@
   padding: 0.3em 0.5em;
   box-sizing: border-box;
   font-weight: 300;
+}
+#Container #ListingContainer .Project .Content h2 {
+  transition: margin 0.3s ease;
+}
+#Container #ListingContainer .Project .Content .ProjectBody .Tags {
+  position: absolute;
+  bottom: 0.1em;
 }
 #Container #ListingContainer .Project .ButtonMore {
   float: right;

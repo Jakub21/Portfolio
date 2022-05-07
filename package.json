@@ -17,6 +17,8 @@
     "@jakub21/domi": "^1.0.7",
     "@jakub21/nra": "^1.1.10",
     "@jakub21/oci": "^1.0.1",
-    "@jakub21/shp": "^1.0.0"
+    "@jakub21/shp": "^1.0.0",
+    "@jakub21/webutils": "^1.0.2",
+    "yaml": "^2.0.1"
   }
 }

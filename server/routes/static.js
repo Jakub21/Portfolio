@@ -26,11 +26,5 @@ module.exports = (config, log) => {
     });
   });
 
-  router.post('/getInfo', (req, resp) => {
-    // NOTE
-    // design decision must be made, keep .js or reformat to .yaml
-    resp.json({success:false});
-  });
-
   return router;
 }

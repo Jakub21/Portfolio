@@ -3,6 +3,7 @@ const express = require('express');
 const domi = require('@jakub21/domi');
 const shp = require('@jakub21/shp');
 const oci = require('@jakub21/oci');
+const wu = require('@jakub21/webutils');
 
 module.exports = (config, log, sessions) => {
   let router = new express.Router();
@@ -18,6 +19,15 @@ module.exports = (config, log, sessions) => {
 
   router.get('/lib/shp', (req, resp) => {
     fs.readFile(shp.path, 'utf-8', (err, data) => {
+      if (err) { resp.status(404).end(); return; }
+      resp.header('Content-Type', 'text/javascript');
+      resp.write(data);
+      resp.status(200).end();
+    });
+  });
+
+  router.get('/lib/webutils', (req, resp) => {
+    fs.readFile(wu.path, 'utf-8', (err, data) => {
       if (err) { resp.status(404).end(); return; }
       resp.header('Content-Type', 'text/javascript');
       resp.write(data);

@@ -17,6 +17,7 @@ const S_DELTA_ENFORCE = 0.00025;
 // Flake appearance
 const TRF_SCALE = 0.15;
 const COLOR_FILL = [180, 200, 230];
+const COLOR_FILL_SPECIAL = [255, 0, 127];
 const COLOR_ALPHA = 175;
 // Flake movement
 const WEIGHT_BASE = 1;
@@ -52,6 +53,12 @@ class FlakesApp extends oci.CanvasInterface {
     this.meter = new FpsMeter();
     this.fpsElement = fpsElement;
     this.flakes = [];
+    canvas.on('click', (evt) => {
+      let value = Math.random() * 0.5;
+      let flake = new Flake(this, new oci.Vector(evt.x, evt.y), value);
+      flake.tex.fill = new oci.Color(...COLOR_FILL_SPECIAL, flake.tex.fill.a);
+      this.flakes.push(flake);
+    });
   }
   run() {
     super.update();

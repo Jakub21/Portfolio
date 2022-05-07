@@ -1,6 +1,10 @@
 @import '../module/breakpoint';
 @import '../module/clearfix';
 
+html {
+  background-color: #634;
+}
+
 #Background {
   z-index: -1;
   position: fixed;
@@ -9,6 +13,12 @@
   width: calc(100vw - (100vw - 100%)); // NOTE
   background-color: #000;
   transition: opacity 1s ease;
+  background-image: url('/img/coding.jpg');
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: luminosity;
+  background-color: #634;
+  filter: blur(.25em) brightness(50%);
 }
 
 #Content {
@@ -22,43 +32,53 @@
 
 #Container {
   opacity: 1;
-  transition: opacity 1s ease;
+  transition: opacity .5s ease;
   &.Intro {
     opacity: 0;
   }
   #ListingContainer {
     .Project {
+      // background-image: radial-gradient(#804, #423);
       background-color: #333;
       @include breakpoint(lowres) {
-        margin: .5em;
+        margin: .75em;
       }
       @include breakpoint(hires) {
-        margin: .5em 0;
+        margin: .75em 0;
       }
       transition: all .3s ease;
       transition-property: color, background, height, opacity;
       overflow: hidden;
-      opacity: .8;
+      opacity: .7;
       position: relative;
       @include clearfix;
       &.on {
-        // h2 { color: #C08; }
-        height: 8em;
         background-color: #46C;
-        opacity: 1;
+        height: 8em;
+        // background-image: linear-gradient(90deg, #A05, #634);
+        opacity: 0.9;
       }
       &.off {
-        height: 2.55em;
+        height: 2.75em;
+        h2 { margin-bottom: .5em; }
+        .ProjectBody { .Tags { display: none;} }
         .ButtonMore { width: 0; }
         cursor: pointer;
       }
-      &:hover { opacity: 1; }
+      &:hover { opacity: 0.9; }
       .Content {
         float: left;
         width: calc(100% - 6em);
         padding: .3em .5em;
         box-sizing: border-box;
         font-weight: 300;
+        h2 { transition: margin .3s ease; }
+        .ProjectBody {
+          .Tags {
+            position: absolute;
+            bottom: 0.1em;
+          }
+        }
       }
       .ButtonMore {
         float: right;

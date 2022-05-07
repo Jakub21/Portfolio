@@ -8,8 +8,8 @@
 }
 
 @define[#Body] {
-  $canvas[#Canvas .Intro]
   $div[#Background]
+  $canvas[#Canvas .Intro]
   $div[#Container .Intro] {
     $div[#Title] {
       $div[.Main] {

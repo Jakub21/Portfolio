@@ -1,0 +1,15 @@
+
+name: CIS Serializer
+value: 55
+short: Compact Instruction Sequences. A serialization format for low-performance devices.
+language: Python
+tags: ['backend', 'data-transfer', 'serialization']
+links:
+  repo: https://github.com/Jakub21/oci.js
+timeline:
+  start: 2019 Q4
+long: >
+  $p {
+    CIS Todo, mention C++ implementation somewhere
+  }
+  %img[src '/img/cis/screen_1.png']

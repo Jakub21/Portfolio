@@ -3,7 +3,7 @@
 
 html {
   // background-image: linear-gradient(#8AF, #57A);
-  background-image: linear-gradient(#46C, #358, #235);
+  background-image: linear-gradient(#57D, #35A, #237);
   overflow: hidden;
 }
 
@@ -20,7 +20,7 @@ html {
   position: absolute;
   left: 0; top: 0;
   width: 100vw; height: 100vh;
-  z-index: 0;
+  z-index: -1;
   background-color: #000;
   opacity: 0;
   transition: opacity 1s linear;
@@ -54,7 +54,7 @@ html {
 
 #Title {
   box-sizing: border-box;
-  background-color: #FFF2;
+  background-color: #FFF4;
   padding: 1.25em;
   font-size: 1.33rem;
   @include breakpoint(hires portrait) {
@@ -98,7 +98,7 @@ html {
     text-align: center;
     box-sizing: border-box;
     padding: 0 .1em .5em;
-    background-color: #FFF5;
+    background-color: #FFF6;
     transition: all .3s ease;
     cursor: pointer;
     @include breakpoint(lowres) {
@@ -125,7 +125,7 @@ html {
 #Canvas {
   position: absolute;
   top: 0; left: 0;
-  z-index: -5;
+  z-index: 0;
   display: block;
   background: none;
   width: 100%;

@@ -1,0 +1,15 @@
+
+name: Domi.js
+value: 100
+short: Fully object-oriented package for advanced DOM manipulation.
+language: JavaScript
+tags: ['tool', 'frontend']
+links:
+  repo: https://github.com/Jakub21/Domi.js
+timeline:
+  start: 2020 Q2
+  latest: +
+long: >
+  $p {
+    Domi TODO
+  }

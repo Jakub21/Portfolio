@@ -1,0 +1,15 @@
+
+name: shp.py
+value: 76
+short: Static HTML Preprocessor. Compiles HTML files and can be used with purely front-end projects.
+language: Python
+tags: ['development-tool', 'text-processing']
+links:
+  repo: https://github.com/Jakub21/shp.py
+timeline:
+  start: 2020 Q4
+  latest: +
+long: >
+  $p {
+    SHP.py TODO
+  }

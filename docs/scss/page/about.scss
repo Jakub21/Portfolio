@@ -1,0 +1,65 @@
+@import '../module/clearfix';
+
+html {
+  background-color: #000;
+  color: #FFF;
+  font-weight: 300;
+}
+
+.ProjectHead {
+  // background-color: #46C;
+  line-height: 1.5em;
+  .Title {
+    background-color: #46C;
+    padding: .5em;
+    &::after {
+      content: "";
+      display: block;
+      @include clearfix;
+    }
+    .Language {
+      height: 3.5em;
+      display: block;
+      float: left;
+    }
+    .Name {
+      margin-top: .35em;
+      margin-left: .2em;
+      font-weight: 100;
+      font-size: 2.75em;
+      float: left;
+    }
+  }
+  .Details {
+    border-top: 1px solid #0003;
+    background-color: #46CD;
+    font-weight: 300;
+    padding: .5em;
+    &>div {
+      margin-bottom: .33em;
+    }
+    .ProjectProperty {
+      display: inline-block;
+      text-decoration: none;
+      color: inherit;
+      margin-right: .2em;
+      &.Link {
+        padding: .25em;
+        transition: background .3s ease;
+        background-color: #0003;
+        &:hover { background-color: #0008; }
+      }
+      .Icon {
+        height: 1.25em;
+        position: relative;
+        bottom: -.25em;
+        margin-right: .1em;
+      }
+    }
+  }
+}
+
+.ProjectBody {
+  font-weight: 300;
+  padding: .5em;
+}

@@ -1,0 +1,15 @@
+
+name: OCI.js
+value: 20
+short: Object-oriented Canvas Interface. A layer for interacting with HTML canvas.
+language: JavaScript
+tags: ['tool', 'frontend', 'procedural-animation']
+links:
+  repo: https://github.com/Jakub21/oci.js
+timeline:
+  start: 2022 Q2
+  latest: +
+long: >
+  $p {
+    OCI Todo
+  }
