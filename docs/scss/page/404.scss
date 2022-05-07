@@ -1,3 +1,4 @@
+$color: #99303E;
 
 html {
   background: #000;
@@ -8,13 +9,13 @@ html {
 h1 {
   margin-top: 30vh;
   font-size: 7em;
-  color: #5AF;
+  color: $color;
 }
 
 a {
   transition: color .3s ease;
   &:hover {
-    color: #5AF;
+    color: $color;
   }
 }
 
