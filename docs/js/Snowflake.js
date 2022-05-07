@@ -1,5 +1,9 @@
 let app;
 
+// Interactions
+const I_MIN_ADD_INTERVAL = 75;
+const I_MAX_SCROLL_VH_ACTIVE = 0.33;
+const I_INACTIVE_MULT = 0.33;
 // Environment
 const S_ADD_CHANCE = 0.1;
 const S_ADD_HEIGHT = -100;
@@ -15,10 +19,12 @@ const S_DELTA_SPREAD = 0.0001;
 const S_DELTA_NUDGE = 0.00001;
 const S_DELTA_ENFORCE = 0.00025;
 // Flake appearance
-const TRF_SCALE = 0.15;
-const COLOR_FILL = [180, 200, 230];
-const COLOR_FILL_SPECIAL = [255, 0, 127];
-const COLOR_ALPHA = 175;
+const TRF_SCALE_MIN = 0.125;
+const TRF_SCALE_MAX = 0.4;
+const COLOR_FILL = [100, 100, 100];
+const COLOR_FILL_SPECIAL = [255, 70, 100];
+const COLOR_ALPHA_MIN = 100;
+const COLOR_ALPHA_MAX = 200;
 // Flake movement
 const WEIGHT_BASE = 1;
 const WEIGHT_SPREAD = 0.34;
@@ -28,7 +34,7 @@ const ROTATION_BASE_SPEED = 0.01;
 const VRT_TWELVE_SIDES_CHANCE = 0; //0.15;
 const VRT_IN_SIZE = 30;
 const VRT_OUT_SIZE_MIN = 60;
-const VRT_OUT_SIZE_SPREAD = 60;
+const VRT_OUT_SIZE_SPREAD = 0;//60;
 const VRT_X_SPREAD = 5;
 const VRT_Y_SPREAD_THRESH = 50;
 const VRT_Y_SPREAD_LOW = 7;
@@ -53,12 +59,33 @@ class FlakesApp extends oci.CanvasInterface {
     this.meter = new FpsMeter();
     this.fpsElement = fpsElement;
     this.flakes = [];
-    canvas.on('click', (evt) => {
-      let value = Math.random() * 0.5;
-      let flake = new Flake(this, new oci.Vector(evt.x, evt.y), value);
-      flake.tex.fill = new oci.Color(...COLOR_FILL_SPECIAL, flake.tex.fill.a);
-      this.flakes.push(flake);
+    this.updateActive();
+    $.get('body').on('click', (evt) => {
+      if (!this.active) return;
+      this.addManualFlake(new oci.Vector(evt.x, evt.y));
     });
+    $.get('body').on('mousemove', (evt) => {
+      if (!evt.buttons) return;
+      this.addManualFlake(new oci.Vector(evt.x, evt.y));
+    });
+    new $.DomiObject(window).on('scroll', () => {
+      this.updateActive();
+    });
+  }
+  addManualFlake(pos) {
+    if (!this.active) return;
+    let now = Date.now()
+    if ((now - this.lastAdded) < I_MIN_ADD_INTERVAL) return;
+    this.lastAdded = now;
+    let value = Math.random() * 0.75;
+    let flake = new Flake(this, pos, value);
+    flake.tex.fill = new oci.Color(...COLOR_FILL_SPECIAL, flake.tex.fill.a);
+    this.flakes.push(flake);
+  }
+  updateActive() {
+    let frac = window.scrollY / window.innerHeight;
+    this.active = frac < I_MAX_SCROLL_VH_ACTIVE;
+    new $.DomiObject(this.canvas)._s.setAdded('Inactive', !this.active);
   }
   run() {
     super.update();
@@ -73,6 +100,7 @@ class FlakesApp extends oci.CanvasInterface {
     super.update();
     this.updateWind();
     let velocity = new oci.Vector(this.wind, S_GRAVITY);
+    if (!this.active) velocity.mult(I_INACTIVE_MULT);
     this.flakes.forEach((flake) => {
       flake.move(velocity);
       if (flake.pos.y > this.canvas.height + S_REM_OFFSET) {
@@ -99,7 +127,8 @@ class FlakesApp extends oci.CanvasInterface {
     this.wind += this.windDelta;
   }
   addRandomFlake(y) {
-    if (Math.random() >= S_ADD_CHANCE) return;
+    let chance = this.active? S_ADD_CHANCE : S_ADD_CHANCE * I_INACTIVE_MULT;
+    if (Math.random() >= chance) return;
     let flakeValue = Math.random();
     let width = this.canvas.width;
     let x = (Math.random() * width * 2) - width;
@@ -113,10 +142,10 @@ class Flake extends oci.elm.RadialPolygon {
   constructor(ci, pos, value) {
     let {sides, vertices} = Flake._generateVertices();
     super(ci, pos, sides, vertices, 1/value);
-    let alpha = COLOR_ALPHA - (COLOR_ALPHA*value);
+    let alpha = COLOR_ALPHA_MAX - ((COLOR_ALPHA_MAX-COLOR_ALPHA_MIN)*value);
     this.tex.fill = new oci.Color(...COLOR_FILL, alpha);
     this.weight = WEIGHT_BASE + (value * WEIGHT_SPREAD - WEIGHT_SPREAD/2);
-    this.trf.scale = TRF_SCALE / this.weight;
+    this.trf.scale = TRF_SCALE_MAX - ((TRF_SCALE_MAX-TRF_SCALE_MIN)*value);
     this.value = value;
     this.rotation = 1 / value;
     this.rotDirection = (Math.random() < ROTATE_CCW_CHANCE)? -1 : 1;

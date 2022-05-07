@@ -1,135 +1,104 @@
 html {
-  background-image: linear-gradient(#57D, #35A, #237);
-  overflow: hidden;
+  background: #FFF;
+  scroll-behavior: smooth;
+}
+html * {
+  cursor: default;
 }
 
-#Content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.Page {
   height: 100vh;
-  overflow: hidden;
-}
-
-#Background {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background-color: #000;
-  opacity: 0;
-  transition: opacity 1s linear;
-}
-#Background.Outro {
-  opacity: 1;
-}
-
-#Container {
   width: 100%;
-  text-align: center;
+  padding: 0.01px;
   position: relative;
-  background-blend-mode: saturation;
-  transition: all 1s ease;
-  left: 0;
-  top: 0;
-  opacity: 1;
-}
-#Container.SlideRight {
-  left: 100vw;
-}
-#Container.SlideLeft {
-  left: -100vw;
-}
-#Container.Outro {
-  opacity: 0;
-}
-#Container.Intro {
-  opacity: 0;
-  top: -5em;
+  z-index: 50;
 }
 
-#Title {
-  box-sizing: border-box;
-  background-color: #FFF4;
-  padding: 1.25em;
-  font-size: 1.33rem;
+.PageButtons {
+  position: absolute;
+  bottom: 10vh;
+  left: 50%;
 }
-@media only screen and (min-resolution: 150dpi) and (orientation: portrait) {
-  #Title {
-    font-size: 1rem;
-  }
+.PageButtons .Row {
+  margin-top: 0.5em;
 }
-#Title .Main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  padding: 2em 0;
-}
-#Title .Main img {
-  height: 4em;
-  margin-right: 2em;
-}
-@media only screen and (min-resolution: 150dpi) and (orientation: portrait) {
-  #Title .Main img {
-    height: 2em;
-  }
-}
-#Title .Main h1 {
-  text-align: center;
-  font-size: 4em;
-  margin: 0;
-}
-@media only screen and (min-resolution: 150dpi) and (orientation: portrait) {
-  #Title .Main h1 {
-    font-size: 2em;
-  }
-}
-#Title p {
-  float: none;
-  clear: both;
+.PageButtons .Button {
+  transform: translateX(-50%);
 }
 
-#SlideButtons {
-  float: none;
-  clear: both;
-}
-#SlideButtons .Button {
-  position: relative;
-  font-weight: 300;
-  float: left;
-  left: 0;
-  width: 50%;
-  text-align: center;
-  box-sizing: border-box;
-  padding: 0 0.1em 0.5em;
-  background-color: #FFF6;
-  transition: all 0.3s ease;
-  cursor: pointer;
+#Landing {
+  height: 100vh;
+  padding: 0.01px;
 }
 @media only screen and (max-resolution: 149dpi) {
-  #SlideButtons .Button {
+  #Landing .Button {
     font-size: 1.2em;
   }
 }
-#SlideButtons .Button:hover#ButtonProjects {
-  left: -2em;
+
+#Contact {
+  text-align: center;
 }
-#SlideButtons .Button:hover#ButtonContact {
-  left: 2em;
+#Contact h1 {
+  margin-top: 10vh;
 }
-#SlideButtons .Button .Symbol {
-  font-size: 1.6em;
+#Contact h4 {
+  margin-top: 2.5em;
+}
+
+.Project .ProjectTitle {
+  padding: 0.5em;
+}
+.Project .ProjectTitle::after {
+  content: "";
+  display: block;
+  float: none;
+  clear: both;
+}
+.Project .ProjectTitle .Language {
+  height: 3.5em;
+  display: block;
+  float: left;
+}
+.Project .ProjectTitle .Name {
+  margin-top: 0.05em;
+  margin-left: 0.2em;
+  font-weight: 200;
+  font-size: 2.75em;
+  float: left;
+}
+.Project .ProjectProperty {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  margin-right: 0.2em;
+}
+.Project .PropertyIcon {
+  height: 1.25em;
   position: relative;
-  top: 0.15em;
-  margin: 0 0.25em;
+  bottom: -0.25em;
+  margin-right: 0.1em;
+}
+.Project .ProjectDetails, .Project .ProjectBody {
+  padding: 0.5em;
+}
+.Project .ProjectDetails {
+  font-size: 1.1em;
+  position: relative;
+  padding-bottom: 0.75em;
+}
+.Project .ProjectDetails::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 1em);
+  height: 1px;
+  background-color: #000;
 }
 
 #Canvas {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 0;
@@ -139,12 +108,89 @@ html {
   height: 100vh;
   transition: all 1s linear;
 }
-#Canvas.SlideRight {
-  left: 50vw;
-}
-#Canvas.SlideLeft {
-  left: -50vw;
+#Canvas.Inactive {
+  opacity: 0.5;
 }
 #Canvas.Intro {
   opacity: 0;
+}
+
+.Title {
+  margin-top: 10vh;
+  box-sizing: border-box;
+  padding: 1.25em;
+  font-size: 1.33rem;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  text-align: center;
+}
+.Title.Intro {
+  opacity: 0;
+}
+@media only screen and (min-resolution: 150dpi) and (orientation: portrait) {
+  .Title {
+    font-size: 1rem;
+  }
+}
+.Title .Main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.Title .Main img {
+  position: relative;
+  z-index: 5;
+  height: 3em;
+  width: 3em;
+  margin-right: 1.5em;
+  transition: transform 0.5s ease;
+}
+@media only screen and (min-resolution: 150dpi) and (orientation: portrait) {
+  .Title .Main img {
+    height: 2em;
+    width: 2em;
+  }
+}
+.Title .Main img.Intro {
+  transform: rotate(90deg);
+}
+.Title .Main img:hover {
+  transform: rotate(90deg);
+}
+.Title .Main h1 {
+  font-weight: 200;
+  text-align: center;
+  font-size: 3em;
+  margin: 0;
+}
+@media only screen and (min-resolution: 150dpi) and (orientation: portrait) {
+  .Title .Main h1 {
+    font-size: 2em;
+  }
+}
+.Title p {
+  float: none;
+  clear: both;
+}
+
+.Button {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0.5em 1em;
+  border-radius: 2em;
+  background-color: #000C;
+  transition: all 0.3s ease;
+  color: #FFF;
+  cursor: pointer;
+}
+.Button:hover {
+  background-color: #631F27;
+}
+.Button .Symbol {
+  margin: 0 0.25em;
+  transform: scale(2);
+}
+.Button * {
+  cursor: pointer;
 }

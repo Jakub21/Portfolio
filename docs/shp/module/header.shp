@@ -1,9 +1,0 @@
-
-$header {
-  $a[.HomeLink href '/'] {
-    $img[src '/img/logo_black.png']
-    $h3 {Home}
-  }
-  $a[.Button href '/contact'] {Contact}
-  $a[.Button href '/projects'] {Projects}
-}

@@ -1,37 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300&display=swap");
-header {
-  background-color: #CCC;
-  color: #000;
-  padding: 0.5em;
-  font-weight: 300;
-  float: none;
-  clear: both;
-}
-header .HomeLink img {
-  display: inline-block;
-  height: 1em;
-}
-header .HomeLink h3 {
-  display: inline-block;
-  margin: 0;
-  margin-left: 0.5em;
-}
-header .Button {
-  float: right;
-  border-left: 1px solid #FFF;
-  padding: 0 0.5em;
-}
-header .Button:nth-child(2) {
-  padding-right: 0;
-}
-header .Button, header .HomeLink {
-  transition: color 0.3s ease;
-}
-header .Button:hover, header .HomeLink:hover {
-  color: #46C;
-}
-
 html, body {
   margin: 0;
   padding: 0;
@@ -45,7 +13,7 @@ html {
 body {
   margin: 0;
   font-family: "Work Sans", sans-serif;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -65,19 +33,18 @@ input, button {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0.33em;
   right: 0.33em;
   font-size: 0.75rem;
-  opacity: 0.8;
-  color: #FFF;
+  opacity: 0.85;
+  color: #000;
 }
 
 .Tag {
   display: inline-block;
   padding: 0.25em;
-  background-color: #FFF;
-  color: #000;
-  margin: 0.33em;
-  margin-left: 0;
+  background-color: #000;
+  color: #FFF;
+  margin: 0.33em 0.15em 0.33em 0;
 }

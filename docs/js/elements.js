@@ -5,10 +5,11 @@ let buildLinksShp = (links) => {
   }
   shp = '';
   for (let [key, link] of Object.entries(links)) {
-    shp += `$a[.ProjectProperty .Link href '${link}'] {
-      %img[.Icon src '/img/link_${key}.png']
+    shp += `$div[.Row] {
+    $a[.Button .ProjectLink href '${link}' target _blank] {
+      %img[.PropertyIcon src '/img/link_${key}.png']
       ${names[key]}
-    }`;
+    }}`;
   }
   return shp;
 }
@@ -32,7 +33,7 @@ let buildTimelineShp = (timeData) => {
       text = `Developed from ${timeData.start} to ${timeData.latest}`; break;
   }
   return `$div[.ProjectProperty] {
-    %img[.Icon src '/img/timeline.png']
+    %img[.PropertyIcon src '/img/timeline.png']
     ${text}
   }`
 }

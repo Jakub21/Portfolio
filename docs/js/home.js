@@ -1,32 +1,32 @@
+const SCROLL_MARGIN = 0.05;
 
 let init = () => {
   initSnowflakes();
+  buildProjects();
+
   setTimeout(() => {
-    $.get('#Container')._s.remove('Intro');
     $.get('#Canvas')._s.remove('Intro');
-  }, 1e3);
+    $.get('.Title')._s.remove('Intro');
+    $.get('img', $.get('.Main').elm)._s.remove('Intro');
+  }, 500);
 
-  $.get('#ButtonProjects').on('click', () => {
-    $.get('#Container')._s.add('SlideRight');
-    $.get('#Canvas')._s.add('SlideRight');
-    onSlideButton();
-    setTimeout(() => {window.location.href = '/projects'}, 1e3);
+  $.get('#ProjectsButton').on('click', () => {
+    window.scroll({top:window.innerHeight});
   });
-  $.get('#ButtonContact').on('click', () => {
-    $.get('#Container')._s.add('SlideLeft');
-    $.get('#Canvas')._s.add('SlideLeft');
-    onSlideButton();
-    setTimeout(() => {window.location.href = '/contact'}, 1e3);
+
+  $.get('#ContactButton').on('click', () => {
+    window.scroll({top:document.body.scrollHeight});
   });
-}
 
-onSlideButton = () => {
-  $.get('#Container')._s.add('Outro');
-  $.get('#Background')._s.add('Outro');
-}
-
-window.onbeforeunload = () => {
-  $.get('#Container')._s.remove('SlideRight').remove('SlideLeft').remove('Outro');
-  $.get('#Canvas')._s.remove('SlideRight').remove('SlideLeft');
-  $.get('#Background')._s.remove('Outro');
+  $.get('body').on('wheel', (evt) => {
+    let delta = window.innerHeight * ((evt.deltaY > 0) ? 1 : -1);
+    let current = window.scrollY / window.innerHeight;
+    let screenNo = Math.floor(current);
+    if ((current-screenNo > 1-SCROLL_MARGIN && delta>0) ||
+        (current-screenNo > SCROLL_MARGIN && delta<0))
+      screenNo += 1;
+    let scroll = delta + screenNo * window.innerHeight;
+    window.scroll({top: scroll});
+    evt.preventDefault();
+  }, {passive: false});
 }

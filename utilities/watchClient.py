@@ -7,11 +7,11 @@ from Namespace import Namespace
 
 cwd = os.getcwd()
 
-shpEntryPoints = ['home', 'projects', 'about', 'contact', '404']
+shpEntryPoints = ['home', '404']
 shpDirectory = f'{cwd}/docs/shp'
 htmlDirectory = f'{cwd}/docs/html'
 
-scssEntryPoints = ['index', 'page/home', 'page/projects', 'page/about', 'page/contact', 'page/404']
+scssEntryPoints = ['index', 'page/home', 'page/404']
 scssDirectory = f'{cwd}/docs/scss'
 cssDirectory = f'{cwd}/docs/css'
 

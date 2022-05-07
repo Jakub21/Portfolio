@@ -7,7 +7,7 @@ let buildProjects = () => {
       return;
     }
     let projects = data.projects;
-    let parent = $.get('#ListingContainer');
+    let parent = $.get('#ProjectsContainer');
     sc = new $toggle.SingleChoice();
     let sorted = [];
     for (let [ID, project] of Object.entries(projects)) {
@@ -26,22 +26,20 @@ let buildProjects = () => {
 
 let buildProjectElement = (parent, project) => {
   parent.appendShp(`
-    $div[#${project.ID}_choice .Project] {
+    $div[.Project .Page] {
       $div[.Content] {
-        $h2 { ${project.name} }
-        $div[#${project.ID}_body .ProjectBody] {
+        $div[.ProjectTitle] {
+          %img[.Language src '/img/${project.language}.png']
+          $div[.Name] {${project.name}}
+        }
+        $div[.ProjectDetails] {
           $div[.Short] {${project.short}}
           $div[.Tags] {${buildTagsShp(project.tags)}}
+          $div[.Timeline] {${buildTimelineShp(project.timeline)}}
         }
+        $div[.ProjectBody] {${project.long}}
+        $div[.PageButtons] {${buildLinksShp(project.links)}}
       }
-      $div[#${project.ID}_more .ButtonMore] {$div{ $span[.Symbol] {▶} More }}
-    }`)
-  let container = $.get(`#${project.ID}_choice`);
-  project.toggle = new $toggle.CssClass(
-    container, 'on', 'off', .3);
-  project.toggle.off();
-  container.on('click', () => { sc.goto(project.ID); })
-  $.get(`#${project.ID}_more`).on('click', () => {
-    window.location.href = `/about=${project.ID}`;
-  });
+    }
+  `);
 }
