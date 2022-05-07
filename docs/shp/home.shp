@@ -11,6 +11,7 @@
 
 @define[#Body] {
   $canvas[#Canvas .Intro]
+  $div[#Top] {▲}
   $div[#Landing] {
     $div[.Title .Intro] {
       $div[.Main] {

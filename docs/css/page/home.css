@@ -93,8 +93,31 @@ html * {
   position: absolute;
   bottom: 0;
   width: calc(100% - 1em);
-  height: 1px;
-  background-color: #000;
+  height: 2px;
+  background-color: #631F27;
+}
+
+#Top {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  padding: 0.5em 1em;
+  border-radius: 2em;
+  background-color: #000C;
+  transition: all 0.3s ease;
+  color: #FFF;
+  z-index: 100;
+  text-align: center;
+  cursor: pointer;
+}
+#Top:hover {
+  background-color: #631F27;
+}
+#Top.Highlight {
+  right: 50%;
+  transform: translateX(50%);
+  min-width: 4em;
+  font-size: 1.2em;
 }
 
 #Canvas {

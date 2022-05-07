@@ -12,4 +12,4 @@ long: >
   $p {
     CIS Todo, mention C++ implementation somewhere
   }
-  %img[src '/img/cis/screen_1.png']
+  // %img[src '/img/cis/screen_1.png']

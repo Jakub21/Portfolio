@@ -29,4 +29,17 @@ let init = () => {
     window.scroll({top: scroll});
     evt.preventDefault();
   }, {passive: false});
+
+  $.get('#Top').on('click', () => {
+    window.scroll({top:0});
+  });
+
+  console.log(window.scrollY);
+  console.log(document.body.scrollHeight);
+  console.log(window.innerHeight);
+  new $.DomiObject(window).on('scroll', () => {
+    let remaining = (document.body.scrollHeight -
+      (window.scrollY+window.innerHeight))/window.innerHeight;
+    $.get('#Top')._s.setAdded('Highlight', remaining < 0.33);
+  });
 }
