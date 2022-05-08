@@ -109,8 +109,8 @@ class FlakesApp extends oci.CanvasInterface {
     });
     this.addRandomFlake(S_ADD_HEIGHT);
     this.meter.tick();
-    // this.fpsElement.prop(
-    //   {innerText: `FPS: ${Math.round(this.meter.get())}`});
+    this.fpsElement.prop(
+      {innerText: `FPS: ${Math.round(this.meter.get())}`});
   }
   remove(flake) {
     flake.remove();
@@ -177,7 +177,7 @@ class Flake extends oci.elm.RadialPolygon {
 
 
 class FpsMeter {
-  constructor(deltas=20) {
+  constructor(deltas=50) {
     this.maxDeltasLength = deltas;
     this.lastTickTime = Date.now();
     this.deltas = [];

@@ -19,6 +19,7 @@
         $h1 {My projects}
       }
       $p {List of my repositories with descriptions and documentation}
+      $p[#FPS !hidden]
     }
     $div[.PageButtons] {
       $div[.Row] {$div[#ProjectsButton .Button] { Go to the projects }}
