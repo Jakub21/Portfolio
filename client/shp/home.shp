@@ -11,7 +11,7 @@
 
 @define[#Body] {
   $canvas[#Canvas .Intro]
-  $div[#Top] {⌂}
+  $div[#Top .Hidden] {⌂}
   $div[#NavButtons] {
     $div[#Previous .Button] {▲}
     $div[#Next .Button] {▼}
