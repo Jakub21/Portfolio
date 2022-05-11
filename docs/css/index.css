@@ -35,7 +35,7 @@ input, button {
 footer {
   position: fixed;
   bottom: 0.33em;
-  right: 0.33em;
+  left: 0.33em;
   font-size: 0.75rem;
   opacity: 0.85;
   color: #000;

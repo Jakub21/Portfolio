@@ -1,4 +1,5 @@
 const SCROLL_MARGIN = 0.05;
+// let touchData = {pos:0, done:false}; // for mobile scrolling
 
 let init = () => {
   initSnowflakes();
@@ -11,31 +12,62 @@ let init = () => {
     $.get('img', $.get('.Main').elm)._s.remove('Intro');
   }, 500);
 
-  $.get('#ContactButton').on('click', () => {
-    window.scroll({top:document.body.scrollHeight});
+  $.get('#Previous').on('click', () => {
+    onScroll(-1);
+  });
+
+  $.get('#Next').on('click', () => {
+    onScroll(1);
   });
 
   $.get('body').on('wheel', (evt) => {
-    let delta = window.innerHeight * ((evt.deltaY > 0) ? 1 : -1);
-    let current = window.scrollY / window.innerHeight;
-    let screenNo = Math.floor(current);
-    if ((current-screenNo > 1-SCROLL_MARGIN && delta>0) ||
-        (current-screenNo > SCROLL_MARGIN && delta<0))
-      screenNo += 1;
-    let scroll = delta + screenNo * window.innerHeight;
-    window.scroll({top: scroll});
+    onScroll((evt.deltaY > 0) ? 1 : -1);
     evt.preventDefault();
   }, {passive: false});
 
   $.get('#Top').on('click', () => {
     window.scroll({top:0});
   });
+  new $.DomiObject(window).on('scroll', updateTopButton);
+  updateTopButton();
 
-  // new $.DomiObject(window)
-  $.get('body').on('scroll', () => {
-    let remaining = (document.body.scrollHeight -
-      (window.scrollY+window.innerHeight))/window.innerHeight;
-    $.get('#Top')._s.setAdded('Highlight', remaining < 0.33);
-    evt.preventDefault();
+  $.get('#ContactButton').on('click', () => {
+    window.scroll({top:document.body.scrollHeight});
   });
+
+  // mobile scrolling (unreliable bc of changing viewport height @ scroll)
+  // $.get('body').on('touchstart', (evt) => {
+  //   console.log(evt.touches[0]);
+  //   touchData.pos = evt.touches[0].clientY;
+  //   touchData.done = false;
+  // });
+  // $.get('body').on('touchmove', (evt) => {
+  //   let delta = touchData.pos - evt.touches[0].clientY;
+  //   console.log(delta);
+  //   evt.stopPropagation();
+  //   evt.preventDefault();
+  //   if (!touchData.done && Math.abs(delta) > 100) {
+  //     onScroll((delta>0)? 1 : -1);
+  //     touchData.done = true;
+  //   }
+  // }, {passive:false});
+}
+
+let onScroll = (direction) => {
+  let height = window.innerHeight;
+  let current = window.scrollY / height;
+  let screenNo = Math.floor(current);
+  if ((current-screenNo > 1-SCROLL_MARGIN && direction>0) ||
+      (current-screenNo > SCROLL_MARGIN && direction<0))
+    screenNo += 1;
+  screenNo += direction;
+  let scroll = screenNo * height;
+  window.scroll({top: scroll});
+}
+
+let updateTopButton = () => {
+  let remaining = (document.body.scrollHeight -
+    (window.scrollY+window.innerHeight))/window.innerHeight;
+  $.get('#Top')._s.setAdded('Highlight', remaining < 0.33)
+    .setAdded('Hidden', window.scrollY < window.innerHeight*0.33);
 }
