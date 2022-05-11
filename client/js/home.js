@@ -1,9 +1,11 @@
 const SCROLL_MARGIN = 0.05;
+let kb;
 // let touchData = {pos:0, done:false}; // for mobile scrolling
 
 let init = () => {
   initSnowflakes();
   buildProjects();
+  kb = new $.Keyboard($.get('body'));
   // $.get('#FPS').prop({hidden:false});
 
   setTimeout(() => {
@@ -12,12 +14,14 @@ let init = () => {
     $.get('img', $.get('.Main').elm)._s.remove('Intro');
   }, 500);
 
-  $.get('#Previous').on('click', () => {
+  $.get('#Previous').onk('click', kb, ['ArrowUp', 'W', 'w'], (evt) => {
     onScroll(-1);
+    evt.preventDefault();
   });
 
-  $.get('#Next').on('click', () => {
+  $.get('#Next').onk('click', kb, ['ArrowDown', 'S', 's'], (evt) => {
     onScroll(1);
+    evt.preventDefault();
   });
 
   $.get('body').on('wheel', (evt) => {
@@ -25,13 +29,14 @@ let init = () => {
     evt.preventDefault();
   }, {passive: false});
 
-  $.get('#Top').on('click', () => {
+  $.get('#Top').onk('click', kb, ['Home', 'H', 'h'], (evt) => {
     window.scroll({top:0});
+    evt.preventDefault();
   });
   new $.DomiObject(window).on('scroll', updateTopButton);
   updateTopButton();
 
-  $.get('#ContactButton').on('click', () => {
+  $.get('#ContactButton').onk('click', kb, ['C', 'c'], () => {
     window.scroll({top:document.body.scrollHeight});
   });
 
