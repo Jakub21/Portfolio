@@ -6,14 +6,15 @@ from shp import MultiSHP
 from Namespace import Namespace
 
 cwd = os.getcwd()
+clientDirectory = f'{cwd}/client'
 
 shpEntryPoints = ['home', '404']
-shpDirectory = f'{cwd}/docs/shp'
-htmlDirectory = f'{cwd}/docs/html'
+shpDirectory = f'{clientDirectory}/shp'
+htmlDirectory = f'{clientDirectory}/html'
 
 scssEntryPoints = ['index', 'page/home', 'page/404']
-scssDirectory = f'{cwd}/docs/scss'
-cssDirectory = f'{cwd}/docs/css'
+scssDirectory = f'{clientDirectory}/scss'
+cssDirectory = f'{clientDirectory}/css'
 
 
 class MultiSCSS:

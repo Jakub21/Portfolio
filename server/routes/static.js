@@ -8,7 +8,8 @@ module.exports = (config, log) => {
     '/': 'home.html',
   })) {
     router.get(route, (req, resp) => {
-      fs.readFile(`./docs/html/${file}`, 'utf-8', (err, data) => {
+      let client = config.get('server.publicDirectory');
+      fs.readFile(`${client}/html/${file}`, 'utf-8', (err, data) => {
         if (err) { resp.status(404).end(); return; }
         resp.write(data);
         resp.status(200).end();

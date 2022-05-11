@@ -7,7 +7,7 @@ module.exports = (config, log) => {
 
   router.get('/allProjects', (req, resp) => {
     let projects = {};
-    let directory = config.get('projectsPath');
+    let directory = config.get('server.projectsDirectory');
     for (let file of fs.readdirSync(directory)) {
       let ID = file.split('.')[0];
       let content = fs.readFileSync(`${directory}/${file}`, 'utf-8');
@@ -18,7 +18,7 @@ module.exports = (config, log) => {
   });
 
   router.get('/project=:pid', (req, resp) => {
-    let directory = config.get('projectsPath');
+    let directory = config.get('server.projectsDirectory');
     let file = `${req.params.pid}.yml`;
     let content = fs.readFileSync(`${directory}/${file}`, 'utf-8');
     let project = YAML.parse(content);
