@@ -9,6 +9,13 @@ html {
     cursor: default;
   }
   scroll-behavior: smooth;
+  // overflow: hidden;
+  // // Hide scrollbar
+  // // &::-webkit-scrollbar { display: none; }
+  // // & {
+  // //  -ms-overflow-style: none;
+  // //  scrollbar-width: none;
+  // // }
 }
 
 .Page {
@@ -32,7 +39,7 @@ html {
 
 #Landing {
   height: 100vh;
-  padding: 0.01px;
+  padding: 0.02px;
   .Button {
     @include breakpoint(lowres) {
       font-size: 1.2em;
@@ -176,10 +183,10 @@ html {
         height: 2em; width: 2em;
       }
       &.Intro {
-        transform: rotate(90deg);
+        transform: rotate(120deg);
       }
       &:hover {
-        transform: rotate(90deg);
+        transform: rotate(60deg);
       }
     }
     h1 {

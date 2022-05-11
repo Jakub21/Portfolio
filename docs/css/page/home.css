@@ -28,7 +28,7 @@ html * {
 
 #Landing {
   height: 100vh;
-  padding: 0.01px;
+  padding: 0.02px;
 }
 @media only screen and (max-resolution: 149dpi) {
   #Landing .Button {
@@ -176,10 +176,10 @@ html * {
   }
 }
 .Title .Main img.Intro {
-  transform: rotate(90deg);
+  transform: rotate(120deg);
 }
 .Title .Main img:hover {
-  transform: rotate(90deg);
+  transform: rotate(60deg);
 }
 .Title .Main h1 {
   font-weight: 200;
