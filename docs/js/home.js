@@ -3,16 +3,13 @@ const SCROLL_MARGIN = 0.05;
 let init = () => {
   initSnowflakes();
   buildProjects();
+  // $.get('#FPS').prop({hidden:false});
 
   setTimeout(() => {
     $.get('#Canvas')._s.remove('Intro');
     $.get('.Title')._s.remove('Intro');
     $.get('img', $.get('.Main').elm)._s.remove('Intro');
   }, 500);
-
-  $.get('#ProjectsButton').on('click', () => {
-    window.scroll({top:window.innerHeight});
-  });
 
   $.get('#ContactButton').on('click', () => {
     window.scroll({top:document.body.scrollHeight});
@@ -34,12 +31,11 @@ let init = () => {
     window.scroll({top:0});
   });
 
-  console.log(window.scrollY);
-  console.log(document.body.scrollHeight);
-  console.log(window.innerHeight);
-  new $.DomiObject(window).on('scroll', () => {
+  // new $.DomiObject(window)
+  $.get('body').on('scroll', () => {
     let remaining = (document.body.scrollHeight -
       (window.scrollY+window.innerHeight))/window.innerHeight;
     $.get('#Top')._s.setAdded('Highlight', remaining < 0.33);
+    evt.preventDefault();
   });
 }

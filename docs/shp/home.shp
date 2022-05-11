@@ -16,14 +16,13 @@
     $div[.Title .Intro] {
       $div[.Main] {
         %img[.Intro src '/img/logo_black.png']
-        $h1 {My projects}
+        $h1 {Jakub21 }
       }
-      $p {List of my repositories with descriptions and documentation}
+      $p {Scroll down to view my projects}
       $p[#FPS !hidden]
     }
     $div[.PageButtons] {
-      $div[.Row] {$div[#ProjectsButton .Button] { Go to the projects }}
-      $div[.Row] {$div[#ContactButton .Button] { Show contact info }}
+      $div[.Row] {$div[#ContactButton .Button] { View contact info }}
     }
     $footer {
       © Jakub21, 2022 Q2
@@ -32,11 +31,11 @@
   $div[#ProjectsContainer]
   $div[#Contact .Page] {
     $h1 {Contact me}
-    $p[.Button] {$a[href 'mailto:jakubp2101@gmail.com'] {
+    $p[.Button] {$a[href 'mailto:jakubp2101@gmail.com' target _blank] {
       jakubp2101@gmail.com
     }}
     $h4 {Or check out my GitHub profile}
-    $p[.Button] {$a[href 'https://github.com/Jakub21'] {
+    $p[.Button] {$a[href 'https://github.com/Jakub21' target _blank] {
       github/Jakub21
     }}
   }

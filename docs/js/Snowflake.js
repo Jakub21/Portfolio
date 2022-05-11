@@ -1,11 +1,18 @@
+// NOTE
+// These used to be snowflakes but they were replaced with stars because chromium based browser could not handle creation of complex flakes and they had massive lag spikes
+
 let app;
+
+let isFirefox = /firefox/i.test(navigator.userAgent);
+let isMobile = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
 
 // Interactions
 const I_MIN_ADD_INTERVAL = 75;
 const I_MAX_SCROLL_VH_ACTIVE = 0.33;
 const I_INACTIVE_MULT = 0.33;
 // Environment
-const S_ADD_CHANCE = 0.1;
+const S_ADD_CHANCE_LOPERF = 0.08;
+const S_ADD_CHANCE_HIPERF = 0.125;
 const S_ADD_HEIGHT = -100;
 const S_REM_OFFSET = 100;
 const S_GRAVITY = 1;
@@ -31,23 +38,24 @@ const WEIGHT_SPREAD = 0.34;
 const ROTATE_CCW_CHANCE = 0.15;
 const ROTATION_BASE_SPEED = 0.01;
 // Flake vertices generation;
-const VRT_TWELVE_SIDES_CHANCE = 0; //0.15;
-const VRT_IN_SIZE = 30;
-const VRT_OUT_SIZE_MIN = 60;
-const VRT_OUT_SIZE_SPREAD = 0;//60;
-const VRT_X_SPREAD = 5;
-const VRT_Y_SPREAD_THRESH = 50;
-const VRT_Y_SPREAD_LOW = 7;
-const VRT_Y_SPREAD_HI_A_CHANCE = 0.25;
-const VRT_Y_SPREAD_HI_A = 14;
-const VRT_Y_SPREAD_HI_B = 18;
-const VRT_SLIM_THRESH = 50;
-const VRT_SLIM_FACTOR = 0.5;
-const VRT_TIP_OFFSET = 10;
+// const VRT_TWELVE_SIDES_CHANCE = 0; //0.15;
+// const VRT_IN_SIZE = 30;
+// const VRT_OUT_SIZE_MIN = 60;
+// const VRT_OUT_SIZE_SPREAD = 0;//60;
+// const VRT_X_SPREAD = 5;
+// const VRT_Y_SPREAD_THRESH = 50;
+// const VRT_Y_SPREAD_LOW = 7;
+// const VRT_Y_SPREAD_HI_A_CHANCE = 0.25;
+// const VRT_Y_SPREAD_HI_A = 14;
+// const VRT_Y_SPREAD_HI_B = 18;
+// const VRT_SLIM_THRESH = 50;
+// const VRT_SLIM_FACTOR = 0.5;
+// const VRT_TIP_OFFSET = 10;
 
 
 let initSnowflakes = () => {
-  app = new FlakesApp($.get('#Canvas'), $.get('#FPS'), 120);
+  let fps = (isFirefox&&!isMobile)? 120 : 60;
+  app = new FlakesApp($.get('#Canvas'), $.get('#FPS'), fps);
   app.run();
 }
 
@@ -95,11 +103,17 @@ class FlakesApp extends oci.CanvasInterface {
     this.wind = (S_WIND_LOW + S_WIND_HGH) / 2;
     this.windDelta = (S_DELTA_MIN + S_DELTA_MAX) / 2;
     this.interval = setInterval(() => {this.update();}, 1e3/this.fps);
+    setInterval(() => {
+      this.fpsElement.prop(
+        {innerText: `FPS: ${Math.round(this.meter.get())}`});
+      // console.log(new Date().getTime()%6e4/1e3, this.flakes.length);
+    }, 500);
   }
   update() {
     super.update();
     this.updateWind();
     let velocity = new oci.Vector(this.wind, S_GRAVITY);
+    velocity.mult(1/window.devicePixelRatio);
     if (!this.active) velocity.mult(I_INACTIVE_MULT);
     this.flakes.forEach((flake) => {
       flake.move(velocity);
@@ -109,8 +123,6 @@ class FlakesApp extends oci.CanvasInterface {
     });
     this.addRandomFlake(S_ADD_HEIGHT);
     this.meter.tick();
-    this.fpsElement.prop(
-      {innerText: `FPS: ${Math.round(this.meter.get())}`});
   }
   remove(flake) {
     flake.remove();
@@ -127,21 +139,26 @@ class FlakesApp extends oci.CanvasInterface {
     this.wind += this.windDelta;
   }
   addRandomFlake(y) {
-    let chance = this.active? S_ADD_CHANCE : S_ADD_CHANCE * I_INACTIVE_MULT;
+    let baseChance = isMobile? S_ADD_CHANCE_LOPERF : S_ADD_CHANCE_HIPERF;
+    let chance = this.active? baseChance : baseChance * I_INACTIVE_MULT;
     if (Math.random() >= chance) return;
     let flakeValue = Math.random();
-    let width = this.canvas.width;
-    let x = (Math.random() * width * 2) - width;
+    let width = this.canvas.width, height = this.canvas.height;
+    let maxSize = Math.max(width, height);
+    let x = isMobile? (Math.random() * maxSize * 2) - maxSize:
+      (Math.random() * width * 2) - width;
     let flake = new Flake(this, new oci.Vector(x, y), Math.random());
     this.flakes.push(flake);
   }
 }
 
 
-class Flake extends oci.elm.RadialPolygon {
+class Flake extends oci.elm.Star {
   constructor(ci, pos, value) {
-    let {sides, vertices} = Flake._generateVertices();
-    super(ci, pos, sides, vertices, 1/value);
+    let sides = Math.floor(Math.random() * 4.5 + 3);
+    let outer = 75;
+    let inner = (sides==3)? 15 : sides * 5;
+    super(ci, pos, sides, inner, outer, 1/value);
     let alpha = COLOR_ALPHA_MAX - ((COLOR_ALPHA_MAX-COLOR_ALPHA_MIN)*value);
     this.tex.fill = new oci.Color(...COLOR_FILL, alpha);
     this.weight = WEIGHT_BASE + (value * WEIGHT_SPREAD - WEIGHT_SPREAD/2);
