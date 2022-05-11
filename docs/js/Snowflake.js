@@ -145,8 +145,7 @@ class FlakesApp extends oci.CanvasInterface {
     let flakeValue = Math.random();
     let width = this.canvas.width, height = this.canvas.height;
     let maxSize = Math.max(width, height);
-    let x = isMobile? (Math.random() * maxSize * 2) - maxSize:
-      (Math.random() * width * 2) - width;
+    let x = (Math.random() * maxSize * (S_WIND_MAX+1)) - maxSize * S_WIND_MAX;
     let flake = new Flake(this, new oci.Vector(x, y), Math.random());
     this.flakes.push(flake);
   }
