@@ -110,7 +110,7 @@ html {
       bottom: 0;
       width: calc(100% - 1em);
       height: 2px;
-      background-color: $burgundy;
+      background-color: #666;
     }
   }
 }
@@ -135,7 +135,7 @@ html {
     min-width: 4em;
     font-size: 1.2em;
     border-radius: 1em;
-    bottom: 1em;
+    bottom: 10vh;
   }
   &.Hidden {
     right: -3em;
