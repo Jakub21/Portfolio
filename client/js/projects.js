@@ -14,7 +14,6 @@ let buildProjects = () => {
       sorted.push(project);
     }
     sorted.sort((a,b) => {return b.value - a.value});
-    console.log(sorted);
     for (let project of sorted) {
       parent.appendShp(`
         $div[.Project .Page] {

@@ -1,14 +1,29 @@
 
 let buildLinksShp = (links) => {
-  let names = {
-    repo: 'Repository', host: 'Deployment', docs: 'Documentation',
+  let data = {
+    repo: { name: 'Repository',
+      title: 'View the repository on GitHub'
+    },
+    host: { name: 'Deployment',
+      title: 'View the deployment of this project'
+    },
+    docs: { name: 'Documentation',
+      title: 'View the documentation page of this project'
+    },
+    npm: { name: 'Published',
+      title: 'View this project on NPM'
+    },
+    pypi: { name: 'Published',
+      title: 'View this project on PYPI'
+    },
   }
   shp = '';
   for (let [key, link] of Object.entries(links)) {
     shp += `$div[.Row] {
-    $a[.Button .ProjectLink href '${link}' target _blank] {
+    $a[.Button .ProjectLink href '${link}' target _blank
+        title '${data[key].title}'] {
       %img[.PropertyIcon src '/img/link_${key}.png']
-      ${names[key]}
+      ${data[key].name}
     }}`;
   }
   return shp;
