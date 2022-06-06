@@ -3,16 +3,20 @@ name: SHP.js
 value: 75
 short: Creates DOM fragments from strings with SHP syntax. It is a spin-off project from Python version with the same name.
 language: JavaScript
-tags: ['tool', 'frontend', 'DOM']
+tags: ['tool', 'frontend', 'text-processing']
 links:
   repo: https://github.com/Jakub21/shp.js
+  npm: https://www.npmjs.com/package/@jakub21/shp
 timeline:
   start: 2020 Q4
   latest: +
 long: >
   $p {
-    HTML preprocessor for static pages. Compiles strings with SHP syntax into elements that can be appended to the document tree.
+    This package compiles strings with SHP syntax into elements that can be appended to the document tree.
   }
   $p {
-    SHP syntax is described in readme file of the original python version.
+    SHP syntax is described in the readme file of the original python version.
+  }
+  $p {
+    The package was used in the making of this website. (Dynamically generating project pages from SHP code)
   }

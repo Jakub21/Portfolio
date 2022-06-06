@@ -10,6 +10,8 @@ timeline:
   start: 2019 Q4
 long: >
   $p {
-    CIS Todo, mention C++ implementation somewhere
+    This is an old project that converts dictionary-like data into byte strings.
   }
-  // %img[src '/img/cis/screen_1.png']
+  $p {
+    ((TODO)) mention the C++ implementation
+  }

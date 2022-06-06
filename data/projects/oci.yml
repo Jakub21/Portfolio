@@ -13,3 +13,6 @@ long: >
   $p {
     OCI Todo
   }
+  $p {
+    The package was used in the making of this website. (The falling stars interactive animation)
+  }

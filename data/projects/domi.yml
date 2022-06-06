@@ -3,13 +3,17 @@ name: Domi.js
 value: 100
 short: Fully object-oriented package for advanced DOM manipulation.
 language: JavaScript
-tags: ['tool', 'frontend']
+tags: ['tool', 'frontend', 'DOM']
 links:
   repo: https://github.com/Jakub21/Domi.js
+  npm: https://www.npmjs.com/package/@jakub21/domi
 timeline:
   start: 2020 Q2
   latest: +
 long: >
   $p {
-    Domi TODO
+    This is an object-oriented package that provides an extensive set of classes for both basic and advanced interfacing with the DOM. Its core is a wrapper for a DOM elements, which is described below. Additionally, there is a set of tools for toggling visibility and appearance of sections. They can be used to create highly interactive web applications with many views available with out reloading the page. For details, please reference the readme file located in the project repository.
+  }
+  $p {
+    The package was used in the making of this website. (Dynamically created content, interactive elements and custom scrolling system)
   }

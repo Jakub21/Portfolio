@@ -6,10 +6,20 @@ language: Python
 tags: ['development-tool', 'text-processing']
 links:
   repo: https://github.com/Jakub21/shp.py
+  pypi: https://pypi.org/project/shp/
 timeline:
   start: 2020 Q4
   latest: +
 long: >
   $p {
-    SHP.py TODO
+    Compiles HTML from files with easy to read SHP syntax. Compilation can be triggerred by automatically detected change in source file or manually. When this happens, the program creates abstract tokens while reading the source. Then, the tokens are used to build a tree of nodes. The tree is finally used to compose final HTML code.
+  }
+  $p {
+    The package is completely detached from the server. Compilation must happen before files are requested. It is intended that already translated HTML files are included in production.
+  }
+  $p {
+    Besides generic HTML tags the SHP also offers function tags. Generally, they are special directives for the compiler. One can clone parts of the code, create basic templates or include other files.
+  }
+  $p {
+    The package was used in the making of this website. (Compilation of the index.html file)
   }
