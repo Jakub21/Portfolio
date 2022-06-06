@@ -53,6 +53,12 @@ html {
   margin-top: 2.5em;
 }
 
+@media only screen and (min-resolution: 150dpi) {
+  .Project {
+    height: auto;
+    margin-bottom: 20vh;
+  }
+}
 .Project .ProjectTitle {
   padding: 0.5em;
 }
@@ -102,6 +108,17 @@ html {
   width: calc(100% - 1em);
   height: 2px;
   background-color: #666;
+}
+@media only screen and (min-resolution: 150dpi) {
+  .Project .PageButtons {
+    position: static;
+  }
+  .Project .PageButtons .Row {
+    text-align: center;
+  }
+  .Project .PageButtons .Button {
+    transform: none;
+  }
 }
 
 #Top {
@@ -236,6 +253,11 @@ html {
   top: 50%;
   transform: translateY(-50%);
   z-index: 100;
+}
+@media only screen and (min-resolution: 150dpi) {
+  #NavButtons {
+    display: none;
+  }
 }
 #NavButtons .Button {
   border-radius: 0;
