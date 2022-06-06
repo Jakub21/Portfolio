@@ -6,12 +6,16 @@ language: Python
 tags: ['backend', 'data-transfer', 'serialization']
 links:
   repo: https://github.com/Jakub21/oci.js
+  docs: https://jakub21.github.io/Cis-Protocol/
 timeline:
   start: 2019 Q4
 long: >
   $p {
-    This is an old project that converts dictionary-like data into byte strings.
+    This is an old project that converts dictionary-like data into byte strings. It is quite limited and is best used when only some basic instructions are sent. It would work with any serial connection, both wired and wireless but was designed with USB in mind.
   }
   $p {
-    ((TODO)) mention the C++ implementation
+    The specifics of how it works are described in the linked documentation.
+  }
+  $p {
+    In 2020 I also created a crude implementation in C++ which you can see $a[target _blank href 'https://gist.github.com/Jakub21/a0e899fac31e7807b866c96e7d0a168b']{here}
   }

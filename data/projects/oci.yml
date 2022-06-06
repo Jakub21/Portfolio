@@ -11,7 +11,7 @@ timeline:
   latest: +
 long: >
   $p {
-    OCI Todo
+    OCI allows for complex interactive animations in the canvas. Currently it is in a proof of concept stage.
   }
   $p {
     The package was used in the making of this website. (The falling stars interactive animation)
