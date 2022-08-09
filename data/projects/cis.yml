@@ -5,8 +5,8 @@ short: Compact Instruction Sequences. A serialization format for low-performance
 language: Python
 tags: ['backend', 'data-transfer', 'serialization']
 links:
-  repo: https://github.com/Jakub21/oci.js
-  docs: https://jakub21.github.io/Cis-Protocol/
+  repo: https://github.com/Jakub21/Cis-Serializer
+  docs: https://jakub21.github.io/Cis-Serializer/
 timeline:
   start: 2019 Q4
 long: >
